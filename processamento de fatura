@@ -1,0 +1,25 @@
+import java.io.File;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class InvoiceProcessor {
+    private Connection connection;
+
+    public InvoiceProcessor() {
+        this.connection = DatabaseConnector.connect();
+    }
+
+    public void processInvoice(File invoice) {
+        // Lógica para processar a fatura e atualizar créditos de energia no banco de dados.
+        try {
+            // Exemplo de inserção no banco de dados
+            String sql = "INSERT INTO invoices (invoice_data) VALUES (?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, invoice.getName()); // Supondo que o nome do arquivo é o dado da fatura
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
