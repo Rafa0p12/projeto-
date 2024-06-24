@@ -1,0 +1,31 @@
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class LoginApp extends Application {
+    @Override
+    public void start(Stage primaryStage) {
+        TextField userField = new TextField();
+        userField.setPromptText("Usuário");
+
+        PasswordField passField = new PasswordField();
+        passField.setPromptText("Senha");
+
+        Button loginButton = new Button("Login");
+
+        VBox vbox = new VBox(userField, passField, loginButton);
+        Scene scene = new Scene(vbox, 300, 200);
+
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Login");
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
